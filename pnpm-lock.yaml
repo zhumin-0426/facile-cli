@@ -36,9 +36,9 @@ importers:
 
   packages/cli:
     dependencies:
-      copy-dir:
-        specifier: ^1.3.0
-        version: 1.3.0
+      fs-extra:
+        specifier: ^11.2.0
+        version: 11.2.0
       inquirer:
         specifier: ^12.2.0
         version: 12.2.0(@types/node@22.9.1)
@@ -1122,9 +1122,6 @@ packages:
 
   convert-source-map@2.0.0:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
-
-  copy-dir@1.3.0:
-    resolution: {integrity: sha512-Q4+qBFnN4bwGwvtXXzbp4P/4iNk0MaiGAzvQ8OiMtlLjkIKjmNN689uVzShSM0908q7GoFHXIPx4zi75ocoaHw==}
 
   core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
@@ -4548,8 +4545,6 @@ snapshots:
       meow: 8.1.2
 
   convert-source-map@2.0.0: {}
-
-  copy-dir@1.3.0: {}
 
   core-util-is@1.0.3: {}
 

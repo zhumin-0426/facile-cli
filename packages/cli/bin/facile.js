@@ -1,6 +1,11 @@
 #!/usr/bin/env node
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
+import { inquirerPrompt } from './inquirer.js'
+
+import { cwd } from 'process'
+
+console.log(cwd())
 
 yargs(hideBin(process.argv)).command('create', 'create facile cli project',
   function (yargs) {
@@ -13,7 +18,9 @@ yargs(hideBin(process.argv)).command('create', 'create facile cli project',
     )
   },
   function (argv) {
-    console.log('argv', argv)
+    inquirerPrompt(argv).then(answers => {
+      console.log("answers",answers)
+    })
   }
 )
   .demandOption('name', 'the project name is required')
