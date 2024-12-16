@@ -1,27 +1,46 @@
 #!/usr/bin/env node
-import yargs from 'yargs'
-import { hideBin } from 'yargs/helpers'
-import { inquirerPrompt } from './inquirer.js'
+const process = require('process')
+const path = require('path')
+const yargs = require('yargs')
+const { program } = require('commander');
+const { hideBin } = require('yargs/helpers')
+const fse = require('fs-extra')
+const { inquirerPrompt } = require('./inquirer.js')
 
-import { cwd } from 'process'
+program.command('create <app-name>')
+  .description('create facile cli project')
+  .action((name) => {
+    require('../command/create/index.js')(name)
+  })
 
-console.log(cwd())
+program.parse()
 
-yargs(hideBin(process.argv)).command('create', 'create facile cli project',
-  function (yargs) {
-    return yargs.option(
-      'name',
-      {
-        alias: 'n',
-        describe: 'this field is the name of the created project',
-      }
-    )
-  },
-  function (argv) {
-    inquirerPrompt(argv).then(answers => {
-      console.log("answers",answers)
-    })
-  }
-)
-  .demandOption('name', 'the project name is required')
-  .argv
+
+// yargs(hideBin(process.argv)).command('create', 'create facile cli project',
+//   function (yargs) {
+//     return yargs.option(
+//       'name',
+//       {
+//         alias: 'n',
+//         describe: 'this field is the name of the created project',
+//       }
+//     )
+//   },
+//   function (argv) {
+//     inquirerPrompt(argv).then(async answers => {
+//       console.log("answers", answers)
+//       const { orderPageclscls } = answers
+//       const exists = await fse.pathExists(`${process.cwd()}\\${orderPageclscls}`)
+//       if (exists) {
+//         throw Error('已经存在')
+//       }
+//       const isCopy = fse.copySync(
+//         path.resolve(__dirname, '../../../temp/vue3'),
+//         path.resolve(process.cwd(), './vue3')
+//       )
+//       console.log(isCopy)
+//     })
+//   }
+// )
+//   .demandOption('name', 'the project name is required')
+//   .argv
